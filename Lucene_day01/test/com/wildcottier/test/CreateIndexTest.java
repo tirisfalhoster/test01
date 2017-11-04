@@ -24,22 +24,7 @@ import org.wltea.analyzer.lucene.IKAnalyzer;
 public class CreateIndexTest {
 	
 	//创建IndexWriter(创建索引准备工作).
-	private IndexWriter createIndexWriter(String indexRepositoryPath) throws IOException{
-		//创建Directory对象.指定索引库存放的目录.并返回目录对象.
-//		Directory dir = FSDirectory.open(Paths.get(indexRepositoryPath, new String[0]));	//创建方式跟老版本的不同.
-		FSDirectory dir = FSDirectory.open(new File(indexRepositoryPath)); //换成了老版本4.10.3
-		
-		//创建一个标准分析器.分析器可以是Lucene官方提供的,也可以使用第三方的.
-		Analyzer analyzer = new StandardAnalyzer();
-		
-		//创建IndexWriterConfig对象:参数为分析器对象. (新版本的Lucene跟老版本的lucene构造参数是不同的.)
-//		IndexWriterConfig config = new IndexWriterConfig(analyzer);	//新版本7.1.0
-		IndexWriterConfig config = new IndexWriterConfig(Version.LATEST, analyzer); //老版本4.10.3
-		
-		//创建IndexWriter对象.(根据目录对象和配置对象创建出写入对象IndexWriter)
-		IndexWriter writer = new IndexWriter(dir, config);
-		return writer;
-	}
+	
 	
 	//利用IK中文分析器创建IndexWriter.
 	private IndexWriter createIndexWriter_IK(String indexRepositoryPath) throws IOException{
