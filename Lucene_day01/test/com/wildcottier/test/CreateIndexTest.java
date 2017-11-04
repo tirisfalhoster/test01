@@ -29,12 +29,7 @@ public class CreateIndexTest {
 	//利用IK中文分析器创建IndexWriter.
 	private IndexWriter createIndexWriter_IK(String indexRepositoryPath) throws IOException{
 		//创建Directory对象.指定索引库存放的目录.并返回目录对象.
-//		Directory dir = FSDirectory.open(Paths.get(indexRepositoryPath, new String[0]));	//创建方式跟老版本的不同.
-		FSDirectory dir = FSDirectory.open(new File(indexRepositoryPath)); //换成了老版本4.10.3
-		
-		//创建一个标准分析器.分析器可以是Lucene官方提供的,也可以使用第三方的.
-		//这里使用IKAnalyzer中文分析器.
-		IKAnalyzer analyzer = new IKAnalyzer();
+//		
 		
 		//创建IndexWriterConfig对象:参数为分析器对象. (新版本的Lucene跟老版本的lucene构造参数是不同的.)
 //		IndexWriterConfig config = new IndexWriterConfig(analyzer);
